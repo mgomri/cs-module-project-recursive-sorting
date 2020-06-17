@@ -2,10 +2,29 @@
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
+    minA = 0
+    minB = 0
+    i = 0
+    while minA < len(arrA) and minB < len(arrB):
+        if arrA[minA] <= arrB[minB]:
+            merged_arr[i] = arrA[minA]
+            minA += 1
+        else:
+            merged_arr[i] = arrB[minB]
+            minB +=1
+        i += 1
 
-    # Your code here
-
-
+    if minA == len(arrA):
+        while minB < len(arrB):
+            merged_arr[i] = arrB[minB]
+            minB += 1
+    
+    elif minB == len(arrB):
+        while minA < len(arrA):
+            merged_arr[i] = arrA[minA]
+            minA += 1
+            i += 1
+            
     return merged_arr
 
 # TO-DO: implement the Merge Sort function below recursively
